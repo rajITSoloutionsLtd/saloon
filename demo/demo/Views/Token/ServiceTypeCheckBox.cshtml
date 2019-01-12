@@ -1,0 +1,19 @@
+﻿@model List<demo.Models.Service>
+@using demo.Models
+
+@{
+	List<Service> DetailsLst = (List<Service>)ViewBag.DetailsLst;
+}
+
+<div class="form-group">
+	<label>Service Name</label>
+	@foreach (var mdlSrvc in Model)
+	{
+
+					<input name="seviceCheckBox[]" value="@mdlSrvc.id"  onchange="srvcCheck(this)" type="checkbox">@mdlSrvc.Service_Name
+							
+	}
+
+
+</div>
+

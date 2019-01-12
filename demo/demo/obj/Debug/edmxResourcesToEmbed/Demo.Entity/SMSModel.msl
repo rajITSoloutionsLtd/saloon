@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SMSModelStoreContainer" CdmEntityContainer="SMSEntities">
+    <EntitySetMapping Name="Instrument_Table">
+      <EntityTypeMapping TypeName="SMSModel.Instrument_Table">
+        <MappingFragment StoreEntitySet="Instrument_Table">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Instrument_Name" ColumnName="Instrument Name" />
+          <ScalarProperty Name="Instrument_Service" ColumnName="Instrument Service" />
+          <ScalarProperty Name="Instrument_Number" ColumnName="Instrument Number" />
+          <ScalarProperty Name="Instrument_Status" ColumnName="Instrument Status" />
+          <ScalarProperty Name="Instrument_Assignee" ColumnName="Instrument Assignee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service_Table">
+      <EntityTypeMapping TypeName="SMSModel.Service_Table">
+        <MappingFragment StoreEntitySet="Service_Table">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Service_Name" ColumnName="Service_Name" />
+          <ScalarProperty Name="GenderGender" ColumnName="GenderGender" />
+          <ScalarProperty Name="Age_From" ColumnName="Age_From" />
+          <ScalarProperty Name="Age_To" ColumnName="Age_To" />
+          <ScalarProperty Name="Customer_Type" ColumnName="Customer_Type" />
+          <ScalarProperty Name="Service_Charge" ColumnName="Service_Charge" />
+          <ScalarProperty Name="update_at" ColumnName="update_at" />
+          <ScalarProperty Name="Service_Type_Id" ColumnName="Service_Type_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceTypes">
+      <EntityTypeMapping TypeName="SMSModel.ServiceType">
+        <MappingFragment StoreEntitySet="ServiceType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Token_Dettails_Table">
+      <EntityTypeMapping TypeName="SMSModel.Token_Dettails_Table">
+        <MappingFragment StoreEntitySet="Token_Dettails_Table">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Token_ID" ColumnName="Token_ID" />
+          <ScalarProperty Name="Service_Number" ColumnName="Service_Number" />
+          <ScalarProperty Name="Agent_Number" ColumnName="Agent_Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Token_Table">
+      <EntityTypeMapping TypeName="SMSModel.Token_Table">
+        <MappingFragment StoreEntitySet="Token_Table">
+          <ScalarProperty Name="Service_Type_ID" ColumnName="Service_Type_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Contact_Number" ColumnName="Contact_Number" />
+          <ScalarProperty Name="Customer_Number" ColumnName="Customer_Number" />
+          <ScalarProperty Name="Service_Charge" ColumnName="Service_Charge" />
+          <ScalarProperty Name="Discount_ServiceCharge" ColumnName="Discount_ServiceCharge" />
+          <ScalarProperty Name="NetTotal" ColumnName="NetTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblServiceAgentMappings">
+      <EntityTypeMapping TypeName="SMSModel.tblServiceAgentMapping">
+        <MappingFragment StoreEntitySet="tblServiceAgentMapping">
+          <ScalarProperty Name="Service_ID" ColumnName="Service_ID" />
+          <ScalarProperty Name="Service_Type_ID" ColumnName="Service_Type_ID" />
+          <ScalarProperty Name="Agent_ID" ColumnName="Agent_ID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Agent_Table">
+      <EntityTypeMapping TypeName="SMSModel.Agent_Table">
+        <MappingFragment StoreEntitySet="Agent_Table">
+          <ScalarProperty Name="Basic_Salary" ColumnName="Basic_Salary" />
+          <ScalarProperty Name="Share_Charge" ColumnName="Share_Charge" />
+          <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Agent_Type" ColumnName="Agent_Type" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Service_Charge" ColumnName="Service_Charge" />
+          <ScalarProperty Name="Service_Type" ColumnName="Service_Type" />
+          <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+          <ScalarProperty Name="Agent_Name" ColumnName="Agent_Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblSrvcAgntMapDettails">
+      <EntityTypeMapping TypeName="SMSModel.TblSrvcAgntMapDettail">
+        <MappingFragment StoreEntitySet="TblSrvcAgntMapDettails">
+          <ScalarProperty Name="Service" ColumnName="Service" />
+          <ScalarProperty Name="SrvcTypeID" ColumnName="SrvcTypeID" />
+          <ScalarProperty Name="TableSrvcMapID" ColumnName="TableSrvcMapID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblOfCustomers">
+      <EntityTypeMapping TypeName="SMSModel.TblOfCustomer">
+        <MappingFragment StoreEntitySet="TblOfCustomer">
+          <ScalarProperty Name="Customer_Discount" ColumnName="Customer_Discount" />
+          <ScalarProperty Name="Service_Charge" ColumnName="Service_Charge" />
+          <ScalarProperty Name="Service" ColumnName="Service" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Customer_Type" ColumnName="Customer_Type" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer_Table">
+      <EntityTypeMapping TypeName="SMSModel.Customer_Table">
+        <MappingFragment StoreEntitySet="Customer_Table">
+          <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="SMSModel.customer">
+        <MappingFragment StoreEntitySet="customers">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+          <ScalarProperty Name="nid" ColumnName="nid" />
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="district" ColumnName="district" />
+          <ScalarProperty Name="thana" ColumnName="thana" />
+          <ScalarProperty Name="post" ColumnName="post" />
+          <ScalarProperty Name="village" ColumnName="village" />
+          <ScalarProperty Name="father_name" ColumnName="father_name" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="SMSModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="remember_token" ColumnName="remember_token" />
+          <ScalarProperty Name="store_ids" ColumnName="store_ids" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblToken_dettails_Service">
+      <EntityTypeMapping TypeName="SMSModel.tblToken_dettails_Service">
+        <MappingFragment StoreEntitySet="tblToken_dettails_Service">
+          <ScalarProperty Name="Service_Number" ColumnName="Service_Number" />
+          <ScalarProperty Name="Token_ID" ColumnName="Token_ID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

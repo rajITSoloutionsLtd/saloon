@@ -1,0 +1,191 @@
+﻿@model demo.Models.TokenModel
+@using demo.Models
+@{
+	ViewBag.Title = "Token Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+	List<ModelCustomer> LstMdlCustomer = (List<ModelCustomer>)ViewBag.customerlist;
+	List<modelservicetype> LstMdlService = (List<modelservicetype>)ViewBag.servicelist;
+}
+
+<h1>Token Create</h1>
+
+@using (Html.BeginForm("CreateToken", "Token"))
+{
+	@Html.AntiForgeryToken()
+
+
+
+	<div id="page-wrapper">
+		<div class="container-fluid well">
+			<!-- Page Heading -->
+
+			<div class="row">
+
+				<div class="col-md-6 col-lg-6">
+											<div class="form-group">
+
+
+								<label for="exampleInputEmail1">Contact Number</label>
+								<input type="text" name="Contact_Number" value="@Model.Contact_Number" onchange="loadCustomer(this)" class="form-control" id="exampleInputEmail1" placeholder="Mobile Number">
+
+
+							</div>
+
+							<div id="idcustomer"> </div>
+
+				</div>
+
+
+
+
+				<input type="hidden" id="hdnIds" name="id" value="@Model.id" />
+
+
+
+
+				<div class="col-md-6 col-lg-6">
+					<div class="form-group">
+						<label>Service Type</label>
+						<select id="idService_Type_ID" name="Service_Type_ID" class="form-control" onchange="loadService(this)">
+							@foreach (var item2 in LstMdlService)
+							{
+								if (Model.Service_Type_ID == item2.id)
+								{
+									<option value="@item2.id" selected>@item2.Name</option>
+								}
+								else
+								{
+									<option value="@item2.id">@item2.Name</option>
+								}
+
+
+							}
+						</select>
+
+					</div>
+
+
+
+
+					<div id="idSrv"></div>
+					<div id="IdagentOthers"></div>   @*Dropdown of Service Type*@
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+
+	@Html.HiddenFor(model => model.id)
+
+
+
+
+
+	<div class="row">
+
+		<div class="col-md-6 col-lg-6  col-sm-6 col-xs-4"><button type="submit" class="btn btn-primary">Printer</button></div>
+
+
+		<div class="col-md-4 col-lg-4  col-sm-4 col-xs-4"><input type="submit" value="Token Generate" class="btn btn-primary"></div>
+
+	
+	</div>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+	@section scripts {
+		<script type="text/javascript">
+
+
+			$(document).ready(function () {
+				//alert($("#hdnIds").val());
+			});
+
+
+			function loadCustomer(obj) {
+				$("#idcustomer").html("<div class=\"form-group\">" +
+					"<label>Loading...</label>" +
+					"</div>");
+				//alert($(obj).val());
+				$.get("/Token/CustomerLoad?id=" + $(obj).val(), function (data, status) {
+					$("#idcustomer").html(data);
+				});
+			}
+
+
+
+
+			//$('#idcustomer').live('change', function () {
+			//	if ((this.value) == 4) {
+			//		$(this).replaceWith($("<input/>",{type:"text"}));
+			//	}
+			//});
+
+
+
+
+
+			function loadService(obj) {
+				$("#idSrv").html("<div class=\"form-group\">" +
+						"<label>Loading...</label>" +
+						"</div>");
+				//alert($(obj).val());
+				$.get("/Token/ServiceTypeCheckBox?ServicetypeID=" + $(obj).val(), function (data, status) {
+					$("#idSrv").html(data);
+				});
+			}
+
+			function srvcCheck(obj) {
+
+				$("#IdagentOthers").html("<div class=\"form-group\">" +
+					"<label>Loading...</label>" +
+					"</div>");
+
+				var ids = "";
+
+				$("input:checked").each(function () {
+
+					if ($(this).val() != "on") {
+						if (ids == "") {
+							ids = $(this).val();
+						} else {
+							ids = ids + "-" + $(this).val();
+						}
+
+					}
+				});
+
+				var cdis = $("#customerDiscount").val();
+
+				$.get("/Token/ServiceLoad?id=" + ids + "&cdis=" + cdis, function (data, status) {
+					$("#IdagentOthers").html(data);
+				});
+			}
+
+
+
+
+		</script>
+	}
+
+
+

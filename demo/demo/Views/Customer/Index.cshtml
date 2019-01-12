@@ -1,0 +1,110 @@
+﻿@using demo.Models;
+@model List<ModelCustomer>
+@{
+	ViewBag.Title = "Customer";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="row">
+			<div class="col-lg-6">
+
+				<a href="/Customer/Create" class="btn btn-primary btn-lg active">New  Customer</a>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">
+					Customer
+				</h1>
+				<ol class="breadcrumb">
+					<li>
+						<i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+					</li>
+
+					<li class="active">
+						<i class="fa fa-table"></i> Customer
+					</li>
+				</ol>
+			</div>
+		</div>
+		<!-- /.row -->
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<h2>Customer Table</h2>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>Customer ID</th>
+								<th>Customer Name</th>
+								<th> Gender</th>
+								<th>Customer Type</th>
+								<th>Customer Address</th>
+								<th>Mobile Number</th>
+								<th>   Age       </th>
+								@*<th> Service </th>*@
+								<th>Discount</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							@for (int i = 0; i < Model.Count(); i++)
+							{
+								<tr>
+									<td>
+										@Model[i].id
+									</td>
+									<td>
+										@Model[i].Name
+									</td>
+
+									<td>
+										@Model[i].Gender
+									</td>
+									<td>
+										@Model[i].Customer_Type
+									</td>
+
+									<td>
+										@Model[i].Address
+									</td>
+									<td>
+										@Model[i].Mobile_Number
+									</td>
+									<td>
+										@Model[i].Age
+									</td>
+
+									@*<td>
+										@Model[i].Service
+									</td>*@
+
+									<td>
+										@Model[i].Customer_Discount
+									</td>
+
+									<td>
+										<a href="/Customer/Create/@Model[i].id"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+									</td>
+
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.row -->
+		<!-- /.row -->
+	</div>
+	<!-- /.container-fluid -->
+</div>
+
+
+

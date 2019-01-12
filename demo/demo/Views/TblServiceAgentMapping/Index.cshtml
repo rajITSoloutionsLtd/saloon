@@ -1,0 +1,86 @@
+﻿@model List<demo.Models.ModelTblService_Agent_Mapping>
+@{
+	ViewBag.Title = "Service Agent Mapping";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="page-wrapper">
+
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="row">
+			<div class="col-lg-6">
+
+				<a href="/TblServiceAgentMapping/Create" class="btn btn-primary btn-lg active">New Service Agent Mapping</a>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">
+					Service Agent Mapping
+				</h1>
+				<ol class="breadcrumb">
+					<li>
+						<i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+					</li>
+
+					<li class="active">
+						<i class="fa fa-table"></i> Service Agent Mapping
+					</li>
+				</ol>
+			</div>
+		</div>
+		<!-- /.row -->
+		<div class="row">
+			<div class="col-lg-6">
+				<h2>Service Agent Mapping Table</h2>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th> ID</th>
+								<th> Agent Name</th>
+								<th> Service Name</th>
+								<th>             </th>
+							</tr>
+						</thead>
+						<tbody>
+							@for (int i = 0; i < Model.Count(); i++)
+							{
+								<tr>
+									<td>
+										@Model[i].id
+									</td>
+									<td>
+										@Model[i].AgentName
+									</td>
+
+									<td>
+										@Model[i].ServiceTypeName
+									</td>
+
+									
+
+									<td>
+										<a href="/TblServiceAgentMapping/Create/@Model[i].id"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+
+									</td>
+
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+		<!-- /.row -->
+		<!-- /.row -->
+	</div>
+	<!-- /.container-fluid -->
+</div>
+
+
+

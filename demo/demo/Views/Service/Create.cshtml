@@ -1,0 +1,164 @@
+﻿@model demo.Models.Service
+@using demo.Models
+@{
+	ViewBag.Title = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+	List<modelservicetype> lstmodelsrvctype = (List<modelservicetype>)ViewBag.Srvctypelst;
+
+}
+<h2>Create</h2>
+
+@using (Html.BeginForm("CreateService", "Service"))
+{
+	@Html.AntiForgeryToken()
+	
+	<div class="form-horizontal">
+		<h4>Service</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			<label class="control-label">Service Name</label>
+			@Html.HiddenFor(model=>model.id)
+			
+				@Html.EditorFor(model => model.Service_Name, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Service_Name, "", new { @class = "text-danger" })
+			
+		</div>
+
+		@*<div class="form-group">
+			<label>Gender</label>
+			<select name="GenderGender" class="form-control">
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+			</select>
+		</div>*@
+
+
+
+		<div class="form-group">
+			<label>Gender</label>
+			<select name="GenderGender" class="form-control">
+				@if (Model.GenderGender == "Male")
+				{
+					<option selected value="Male">Male</option>
+									<option value="Female">Female</option>
+				}
+				else if (Model.GenderGender == "Female")
+				{
+
+					<option value="Male">Male</option>
+									<option selected value="Female">Female</option>
+
+				}
+
+				else
+				{
+					<option value="Male">Male</option>
+									<option value="Female">Female</option>
+				}
+
+
+			</select>
+		</div>
+
+
+
+ 
+
+		<div class="form-group">
+			<label class="control-label">Service Type</label>
+			
+				<select name="Service_Type_Id" class="form-control">
+				@foreach (var item in lstmodelsrvctype)
+				{
+
+					if (item.id == Model.Service_Type_Id)
+					{
+						<option value="@item.id" selected>@item.Name</option>
+					}
+					else
+					{
+						<option value="@item.id">@item.Name</option>
+					}
+
+				}
+				</select>
+				
+		</div>
+
+
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Age_From@*, htmlAttributes: new { @class = "control-label col-md-2" }*@)          
+				@Html.EditorFor(model => model.Age_From, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Age_From, "", new { @class = "text-danger" })
+	
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Age_To@*, htmlAttributes: new { @class = "control-label col-md-2" }*@)       
+				@Html.EditorFor(model => model.Age_To, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Age_To, "", new { @class = "text-danger" })            
+		</div>
+
+
+
+
+
+
+
+		<div class="form-group">
+			<label>Customer Type</label>
+			<select name="Customer_Type" class="form-control">
+
+				@if (Model.Customer_Type == "New")
+				{
+					<option selected value="New">New</option>
+									<option value="Regular">Regular</option>
+				}
+				else if (Model.Customer_Type == "Regular")
+				{
+					<option value="New">New</option>
+									<option selected value="Regular">Regular</option>
+				}
+				else
+				{
+					<option value="New">New</option>
+									<option value="Regular">Regular</option>
+				}
+
+
+			</select>
+		</div>
+
+
+
+		@*<div class="form-group">
+			<label>Customer_Type</label>
+			<select name="Gender" class="form-control">
+				<option value="New Customer">New Customer</option>
+				<option value="Regular Customer">Regular Customer</option>
+			</select>
+		</div>*@
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Service_Charge@*, htmlAttributes: new { @class = "control-label col-md-2" }*@)
+   
+				@Html.EditorFor(model => model.Service_Charge, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Service_Charge, "", new { @class = "text-danger" })
+	
+		</div>
+
+		
+		
+		<div class="form-group">
+					  <input type="submit" value="Create" class="btn btn-default" />       
+		</div>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>

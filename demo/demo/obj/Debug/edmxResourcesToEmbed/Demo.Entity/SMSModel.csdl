@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Instrument_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Instrument_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Instrument_Service" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Instrument_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Instrument_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Instrument_Assignee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Service_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Service_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GenderGender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Age_From" Type="Int32" Nullable="false" />
+    <Property Name="Age_To" Type="Int32" Nullable="false" />
+    <Property Name="Customer_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Service_Charge" Type="Double" Nullable="false" />
+    <Property Name="update_at" Type="DateTime" Precision="3" />
+    <Property Name="Service_Type_Id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ServiceType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Token_Dettails_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Token_ID" Type="Int32" />
+    <Property Name="Service_Number" Type="Int32" />
+    <Property Name="Agent_Number" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Token_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Contact_Number" Type="Int32" />
+    <Property Name="Customer_Number" Type="Int32" />
+    <Property Name="Service_Charge" Type="Double" />
+    <Property Name="Discount_ServiceCharge" Type="Double" />
+    <Property Name="NetTotal" Type="Double" />
+    <Property Name="Customer_ID" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Service_Type_ID" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="SMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Instrument_Table" EntityType="Self.Instrument_Table" />
+    <EntitySet Name="Service_Table" EntityType="Self.Service_Table" />
+    <EntitySet Name="ServiceTypes" EntityType="Self.ServiceType" />
+    <EntitySet Name="Token_Dettails_Table" EntityType="Self.Token_Dettails_Table" />
+    <EntitySet Name="Token_Table" EntityType="Self.Token_Table" />
+    <EntitySet Name="tblServiceAgentMappings" EntityType="SMSModel.tblServiceAgentMapping" />
+    <EntitySet Name="Agent_Table" EntityType="SMSModel.Agent_Table" />
+    <EntitySet Name="TblSrvcAgntMapDettails" EntityType="SMSModel.TblSrvcAgntMapDettail" />
+    <EntitySet Name="TblOfCustomers" EntityType="SMSModel.TblOfCustomer" />
+    <EntitySet Name="Customer_Table" EntityType="SMSModel.Customer_Table" />
+    <EntitySet Name="customers" EntityType="SMSModel.customer" />
+    <EntitySet Name="users" EntityType="SMSModel.user" />
+    <EntitySet Name="tblToken_dettails_Service" EntityType="SMSModel.tblToken_dettails_Service" />
+  </EntityContainer>
+  <EntityType Name="tblServiceAgentMapping">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Agent_ID" Type="Int32" />
+    <Property Name="Service_Type_ID" Type="Int32" />
+    <Property Name="Service_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Agent_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Agent_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Specialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Service_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Service_Charge" Type="Double" />
+    <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Agent_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile_Number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Share_Charge" Type="Double" />
+    <Property Name="Basic_Salary" Type="Double" />
+  </EntityType>
+  <EntityType Name="TblSrvcAgntMapDettail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TableSrvcMapID" Type="Int32" />
+    <Property Name="SrvcTypeID" Type="Int32" />
+    <Property Name="Service" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TblOfCustomer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Service" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Service_Charge" Type="Double" />
+    <Property Name="Customer_Discount" Type="Double" />
+  </EntityType>
+  <EntityType Name="Customer_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="father_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="village" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="post" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="thana" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="district" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="reference" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="nid" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="discount_percentage" Type="Double" Nullable="false" />
+    <Property Name="image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="role_id" Type="Int32" />
+    <Property Name="store_ids" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="remember_token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblToken_dettails_Service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Token_ID" Type="Int32" />
+    <Property Name="Service_Number" Type="Int32" />
+  </EntityType>
+</Schema>

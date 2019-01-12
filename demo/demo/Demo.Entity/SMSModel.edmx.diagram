@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="938554ef7fd44fb9b27893793dfe4365" Name="Diagram1" ZoomLevel="101">
+        <EntityTypeShape EntityType="SMSModel.Instrument_Table" Width="1.5" PointX="5.625" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSModel.Service_Table" Width="1.5" PointX="7.375" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSModel.ServiceType" Width="1.5" PointX="5.625" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSModel.Token_Dettails_Table" Width="1.5" PointX="2.125" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSModel.Token_Table" Width="1.5" PointX="4" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSModel.tblServiceAgentMapping" Width="1.5" PointX="4" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSModel.Agent_Table" Width="1.5" PointX="0.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSModel.TblSrvcAgntMapDettail" Width="1.5" PointX="7.375" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSModel.TblOfCustomer" Width="1.5" PointX="2.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SMSModel.Customer_Table" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SMSModel.customer" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SMSModel.user" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SMSModel.tblToken_dettails_Service" Width="1.5" PointX="0.75" PointY="0.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

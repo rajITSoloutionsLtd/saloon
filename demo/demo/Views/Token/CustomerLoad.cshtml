@@ -1,0 +1,34 @@
+﻿@model demo.Models.ModelCustomer
+
+
+<div class="form-group">
+	<label for="exampleInputEmail1"> Age </label>
+	<input type="text" class="form-control" name="age" value="@Model.Age"   id="exampleInputEmail1" placeholder="Age">
+</div>
+
+
+
+
+<div class="form-group">
+	<label for="exampleInputEmail1"> Gender </label>
+	<input type="text" class="form-control " name="Gender" value="@Model.Gender" id="exampleInputEmail1" placeholder="Gender">
+</div>
+
+
+<div class="form-group">
+	<label for="exampleInputEmail1"> Customer Name </label>
+	<input type="text" class="form-control " name="Customer_Name" value="@Model.Name" id="exampleInputEmail1" placeholder="Customer Name">
+</div>
+
+
+<div class="form-group">
+	<label for="exampleInputEmail1">Discount in Service Charge</label>
+	<input type="text" class="form-control " name="Discount_ServiceCharge" value="@Model.Customer_Discount" onchange="srvcCheck(this)"  id="customerDiscount" placeholder="Discount Charge">
+</div>
+
+
+
+@*<div class="form-group">
+	<label>Text Input with Placeholder</label>
+	<input class="form-control" placeholder="Enter text">
+</div>*@

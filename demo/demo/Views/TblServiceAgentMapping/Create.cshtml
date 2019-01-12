@@ -1,0 +1,126 @@
+﻿@model demo.Models.ModelTblService_Agent_Mapping
+@using demo.Models
+
+
+@{
+	ViewBag.Title = "Service Agent Mapping Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+	List<ModelAgent> LstMdlAgent = (List<ModelAgent>)ViewBag.agentlist;
+	List<modelservicetype> LstMdlSrvcType = (List<modelservicetype>)ViewBag.srvclist;
+}
+
+
+
+<h1> Create Service Agent Mapping</h1>
+
+@using (Html.BeginForm("CreateServiceAgent", "TblServiceAgentMapping"))
+{
+	@Html.AntiForgeryToken()
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<!-- Page Heading -->
+			<div class="form-group">
+				<label>Agent Name</label>
+				<select name="Agent_ID" class="form-control">
+					@foreach (var item in LstMdlAgent)
+					{
+						if (Model.Agent_ID == item.id)
+						{
+							<option value="@item.id" selected>@item.Agent_Name</option>
+						}
+						else
+						{
+							<option value="@item.id">@item.Agent_Name</option>
+						}
+
+
+
+					}
+				</select>
+			</div>
+
+
+
+
+
+
+
+
+
+
+			<div class="form-group">
+				<label>Service Type</label>
+				<select id="idService_Type_ID" name="Service_Type_ID" class="form-control" onchange="loadService(this)">
+					@foreach (var item2 in LstMdlSrvcType)
+					{
+						if (Model.Service_Type_ID == item2.id)
+						{
+							<option value="@item2.id" selected>@item2.Name</option>
+						}
+						else
+						{
+							<option value="@item2.id">@item2.Name</option>
+						}
+
+
+					}
+				</select>
+			</div>
+
+		</div>
+
+
+
+		<input type="hidden" id="hdnIds" name="id" value="@Model.id" />
+		<div id="idSrv">
+
+			@{
+				Html.RenderAction("ServiceTypeCeckBox", "TblServiceAgentMapping", new { ServicetypeID = Model.Service_Type_ID, tblServcMappID = Model.id });
+			}
+
+		</div>
+
+
+
+		@*<div class="row">*@
+
+		<div class="form-group">
+			<div class="col-md-10">
+				<input type="submit" value="Submit" class="btn btn-default" />
+			</div>
+		</div>
+
+	</div>
+	@*</div>*@
+
+
+
+				}
+
+
+@section scripts {
+	<script type="text/javascript">
+
+	
+	$(document).ready(function () {
+		//alert($("#hdnIds").val());
+	});
+
+
+	function loadService(obj) {
+		$("#idSrv").html("<div class=\"form-group\">" +
+				"<label>Loading...</label>" +
+				"</div>");
+
+		//alert($(obj).val());
+		$.get("/TblServiceAgentMapping/ServiceTypeCeckBox?ServicetypeID=" + $(obj).val(), function (data, status) {
+			$("#idSrv").html(data);
+		});
+	}
+
+</script>
+	}
+
+

@@ -1,0 +1,29 @@
+﻿@model List<demo.Models.Service>
+@using demo.Models
+
+@{
+	List<Model_AgentMappingDettails> DetailsLst = (List<Model_AgentMappingDettails>)ViewBag.DetailsLst;
+}
+
+<div class="form-group">
+	<label>Service Name</label>
+	@foreach (var mdlSrvc in Model)
+	{
+
+		if (DetailsLst.FindAll(x => x.Service == mdlSrvc.id).Count > 0)
+		{
+			<input name="checkbox[]" value="@mdlSrvc.id" checked type="checkbox">@mdlSrvc.Service_Name
+
+		}
+		else
+		{
+			<input name="checkbox[]" value="@mdlSrvc.id"  type="checkbox">@mdlSrvc.Service_Name
+
+		}
+
+
+
+	}
+
+
+</div>

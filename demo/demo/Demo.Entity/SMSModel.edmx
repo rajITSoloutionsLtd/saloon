@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agent_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Agent_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Specialization" Type="varchar" MaxLength="50" />
+          <Property Name="Service_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Service_Charge" Type="float" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="Agent_Type" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile_Number" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Share_Charge" Type="float" />
+          <Property Name="Basic_Salary" Type="float" />
+        </EntityType>
+        <EntityType Name="Customer_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Mobile_Number" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="father_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="village" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="post" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="thana" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="district" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="mobile" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="reference" Type="varchar(max)" Nullable="false" />
+          <Property Name="nid" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="discount_percentage" Type="float" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Instrument_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Instrument Name" Type="varchar" MaxLength="20" />
+          <Property Name="Instrument Service" Type="varchar" MaxLength="50" />
+          <Property Name="Instrument Number" Type="varchar" MaxLength="20" />
+          <Property Name="Instrument Status" Type="varchar" MaxLength="50" />
+          <Property Name="Instrument Assignee" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="receivables">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="sale_order_id" Type="int" Nullable="false" />
+          <Property Name="amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Service_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenderGender" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Age_From" Type="int" Nullable="false" />
+          <Property Name="Age_To" Type="int" Nullable="false" />
+          <Property Name="Customer_Type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Service_Charge" Type="float" Nullable="false" />
+          <Property Name="update_at" Type="datetime" />
+          <Property Name="Service_Type_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TblOfCustomer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Customer_Type" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Mobile_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Service" Type="varchar" MaxLength="50" />
+          <Property Name="Service_Charge" Type="float" />
+          <Property Name="Customer_Discount" Type="float" />
+        </EntityType>
+        <EntityType Name="tblServiceAgentMapping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Agent_ID" Type="int" />
+          <Property Name="Service_Type_ID" Type="int" />
+          <Property Name="Service_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TblSrvcAgntMapDettails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableSrvcMapID" Type="int" />
+          <Property Name="SrvcTypeID" Type="int" />
+          <Property Name="Service" Type="int" />
+        </EntityType>
+        <EntityType Name="tblToken_dettails_Service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Token_ID" Type="int" />
+          <Property Name="Service_Number" Type="int" />
+        </EntityType>
+        <EntityType Name="Token_Dettails_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Token_ID" Type="int" />
+          <Property Name="Service_Number" Type="int" />
+          <Property Name="Agent_Number" Type="int" />
+        </EntityType>
+        <EntityType Name="Token_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="Contact_Number" Type="int" />
+          <Property Name="Customer_Number" Type="int" />
+          <Property Name="Service_Charge" Type="float" />
+          <Property Name="Discount_ServiceCharge" Type="float" />
+          <Property Name="NetTotal" Type="float" />
+          <Property Name="Customer_ID" Type="int" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Service_Type_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="mobile" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="role_id" Type="int" />
+          <Property Name="store_ids" Type="varchar" MaxLength="255" />
+          <Property Name="remember_token" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="SMSModelStoreContainer">
+          <EntitySet Name="Agent_Table" EntityType="Self.Agent_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_Table" EntityType="Self.Customer_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instrument_Table" EntityType="Self.Instrument_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="receivables" EntityType="Self.receivables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service_Table" EntityType="Self.Service_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblOfCustomer" EntityType="Self.TblOfCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblServiceAgentMapping" EntityType="Self.tblServiceAgentMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSrvcAgntMapDettails" EntityType="Self.TblSrvcAgntMapDettails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblToken_dettails_Service" EntityType="Self.tblToken_dettails_Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Token_Dettails_Table" EntityType="Self.Token_Dettails_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Token_Table" EntityType="Self.Token_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Instrument_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Instrument_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Instrument_Service" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Instrument_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Instrument_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Instrument_Assignee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Service_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Service_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GenderGender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Age_From" Type="Int32" Nullable="false" />
+          <Property Name="Age_To" Type="Int32" Nullable="false" />
+          <Property Name="Customer_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Service_Charge" Type="Double" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Precision="3" />
+          <Property Name="Service_Type_Id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Token_Dettails_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token_ID" Type="Int32" />
+          <Property Name="Service_Number" Type="Int32" />
+          <Property Name="Agent_Number" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Token_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_Number" Type="Int32" />
+          <Property Name="Customer_Number" Type="Int32" />
+          <Property Name="Service_Charge" Type="Double" />
+          <Property Name="Discount_ServiceCharge" Type="Double" />
+          <Property Name="NetTotal" Type="Double" />
+          <Property Name="Customer_ID" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Service_Type_ID" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="SMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Instrument_Table" EntityType="Self.Instrument_Table" />
+          <EntitySet Name="Service_Table" EntityType="Self.Service_Table" />
+          <EntitySet Name="ServiceTypes" EntityType="Self.ServiceType" />
+          <EntitySet Name="Token_Dettails_Table" EntityType="Self.Token_Dettails_Table" />
+          <EntitySet Name="Token_Table" EntityType="Self.Token_Table" />
+          <EntitySet Name="tblServiceAgentMappings" EntityType="SMSModel.tblServiceAgentMapping" />
+          <EntitySet Name="Agent_Table" EntityType="SMSModel.Agent_Table" />
+          <EntitySet Name="TblSrvcAgntMapDettails" EntityType="SMSModel.TblSrvcAgntMapDettail" />
+          <EntitySet Name="TblOfCustomers" EntityType="SMSModel.TblOfCustomer" />
+          <EntitySet Name="Customer_Table" EntityType="SMSModel.Customer_Table" />
+          <EntitySet Name="customers" EntityType="SMSModel.customer" />
+          <EntitySet Name="users" EntityType="SMSModel.user" />
+          <EntitySet Name="tblToken_dettails_Service" EntityType="SMSModel.tblToken_dettails_Service" />
+          </EntityContainer>
+        <EntityType Name="tblServiceAgentMapping">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Agent_ID" Type="Int32" />
+          <Property Name="Service_Type_ID" Type="Int32" />
+          <Property Name="Service_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Agent_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Agent_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Specialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Service_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Service_Charge" Type="Double" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Agent_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile_Number" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Share_Charge" Type="Double" />
+          <Property Name="Basic_Salary" Type="Double" />
+        </EntityType>
+        <EntityType Name="TblSrvcAgntMapDettail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TableSrvcMapID" Type="Int32" />
+          <Property Name="SrvcTypeID" Type="Int32" />
+          <Property Name="Service" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TblOfCustomer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Service" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Service_Charge" Type="Double" />
+          <Property Name="Customer_Discount" Type="Double" />
+        </EntityType>
+        <EntityType Name="Customer_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile_Number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="father_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="village" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="post" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="thana" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="district" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="reference" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="nid" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="discount_percentage" Type="Double" Nullable="false" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="role_id" Type="Int32" />
+          <Property Name="store_ids" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="remember_token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblToken_dettails_Service">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Token_ID" Type="Int32" />
+          <Property Name="Service_Number" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SMSModelStoreContainer" CdmEntityContainer="SMSEntities">
+          <EntitySetMapping Name="Instrument_Table">
+            <EntityTypeMapping TypeName="SMSModel.Instrument_Table">
+              <MappingFragment StoreEntitySet="Instrument_Table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Instrument_Name" ColumnName="Instrument Name" />
+                <ScalarProperty Name="Instrument_Service" ColumnName="Instrument Service" />
+                <ScalarProperty Name="Instrument_Number" ColumnName="Instrument Number" />
+                <ScalarProperty Name="Instrument_Status" ColumnName="Instrument Status" />
+                <ScalarProperty Name="Instrument_Assignee" ColumnName="Instrument Assignee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service_Table">
+            <EntityTypeMapping TypeName="SMSModel.Service_Table">
+              <MappingFragment StoreEntitySet="Service_Table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Service_Name" ColumnName="Service_Name" />
+                <ScalarProperty Name="GenderGender" ColumnName="GenderGender" />
+                <ScalarProperty Name="Age_From" ColumnName="Age_From" />
+                <ScalarProperty Name="Age_To" ColumnName="Age_To" />
+                <ScalarProperty Name="Customer_Type" ColumnName="Customer_Type" />
+                <ScalarProperty Name="Service_Charge" ColumnName="Service_Charge" />
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="Service_Type_Id" ColumnName="Service_Type_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTypes">
+            <EntityTypeMapping TypeName="SMSModel.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Token_Dettails_Table">
+            <EntityTypeMapping TypeName="SMSModel.Token_Dettails_Table">
+              <MappingFragment StoreEntitySet="Token_Dettails_Table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Token_ID" ColumnName="Token_ID" />
+                <ScalarProperty Name="Service_Number" ColumnName="Service_Number" />
+                <ScalarProperty Name="Agent_Number" ColumnName="Agent_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Token_Table">
+            <EntityTypeMapping TypeName="SMSModel.Token_Table">
+              <MappingFragment StoreEntitySet="Token_Table">
+                <ScalarProperty Name="Service_Type_ID" ColumnName="Service_Type_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact_Number" />
+                <ScalarProperty Name="Customer_Number" ColumnName="Customer_Number" />
+                <ScalarProperty Name="Service_Charge" ColumnName="Service_Charge" />
+                <ScalarProperty Name="Discount_ServiceCharge" ColumnName="Discount_ServiceCharge" />
+                <ScalarProperty Name="NetTotal" ColumnName="NetTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblServiceAgentMappings">
+            <EntityTypeMapping TypeName="SMSModel.tblServiceAgentMapping">
+              <MappingFragment StoreEntitySet="tblServiceAgentMapping">
+                <ScalarProperty Name="Service_ID" ColumnName="Service_ID" />
+                <ScalarProperty Name="Service_Type_ID" ColumnName="Service_Type_ID" />
+                <ScalarProperty Name="Agent_ID" ColumnName="Agent_ID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agent_Table">
+            <EntityTypeMapping TypeName="SMSModel.Agent_Table">
+              <MappingFragment StoreEntitySet="Agent_Table">
+                <ScalarProperty Name="Basic_Salary" ColumnName="Basic_Salary" />
+                <ScalarProperty Name="Share_Charge" ColumnName="Share_Charge" />
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Agent_Type" ColumnName="Agent_Type" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Service_Charge" ColumnName="Service_Charge" />
+                <ScalarProperty Name="Service_Type" ColumnName="Service_Type" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+                <ScalarProperty Name="Agent_Name" ColumnName="Agent_Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSrvcAgntMapDettails">
+            <EntityTypeMapping TypeName="SMSModel.TblSrvcAgntMapDettail">
+              <MappingFragment StoreEntitySet="TblSrvcAgntMapDettails">
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="SrvcTypeID" ColumnName="SrvcTypeID" />
+                <ScalarProperty Name="TableSrvcMapID" ColumnName="TableSrvcMapID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOfCustomers">
+            <EntityTypeMapping TypeName="SMSModel.TblOfCustomer">
+              <MappingFragment StoreEntitySet="TblOfCustomer">
+                <ScalarProperty Name="Customer_Discount" ColumnName="Customer_Discount" />
+                <ScalarProperty Name="Service_Charge" ColumnName="Service_Charge" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Customer_Type" ColumnName="Customer_Type" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Table">
+            <EntityTypeMapping TypeName="SMSModel.Customer_Table">
+              <MappingFragment StoreEntitySet="Customer_Table">
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="SMSModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+                <ScalarProperty Name="nid" ColumnName="nid" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="thana" ColumnName="thana" />
+                <ScalarProperty Name="post" ColumnName="post" />
+                <ScalarProperty Name="village" ColumnName="village" />
+                <ScalarProperty Name="father_name" ColumnName="father_name" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="SMSModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="remember_token" ColumnName="remember_token" />
+                <ScalarProperty Name="store_ids" ColumnName="store_ids" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblToken_dettails_Service">
+            <EntityTypeMapping TypeName="SMSModel.tblToken_dettails_Service">
+              <MappingFragment StoreEntitySet="tblToken_dettails_Service">
+                <ScalarProperty Name="Service_Number" ColumnName="Service_Number" />
+                <ScalarProperty Name="Token_ID" ColumnName="Token_ID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

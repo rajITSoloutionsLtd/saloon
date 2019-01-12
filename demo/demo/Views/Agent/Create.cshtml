@@ -1,0 +1,113 @@
+﻿@model demo.Models.ModelAgent
+@using demo.Models
+@{
+	ViewBag.Title = "Create Agent";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+	List<ModelAgent> Lstmodelagent = (List<ModelAgent>)ViewBag.Srvctypelst;
+
+}
+
+<h1>Agent Create</h1>
+
+@using (Html.BeginForm("CreateAgent", "Agent"))
+{
+	@Html.AntiForgeryToken()
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<!-- Page Heading -->
+		<div class="row">
+		<div class="col-lg-12">
+			<form>
+				
+				
+				
+				<div class="form-group">
+					<label for="exampleInputEmail1">Agent Name</label>
+					<input type="text"  name="Agent_Name" value="@Model.Agent_Name"class="form-control" id="exampleInputEmail1" placeholder="Agent Name">
+				</div>
+
+
+
+				<div class="form-group">
+					<label for="exampleInputPassword1">Mobile Number</label>
+					<input type="text" name="Mobile_Number" value="@Model.Mobile_Number" class="form-control" id="exampleInputPassword1" placeholder="Contact Number">
+				</div>
+			
+						
+
+					<div class="form-group">
+					<label for="exampleInputEmail1"> Address </label>
+					<input type="text" name="Address" value="@Model.Address"class="form-control" id="exampleInputEmail1" placeholder=" Contact Address ">
+				    </div>
+
+
+
+				@*<div class="form-group">
+					<label>Gender</label>
+					<select name="Gender" class="form-control">
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+					</select>
+				</div>*@
+
+
+
+
+
+
+				<div class="form-group">
+					<label>Gender</label>
+					<select name="Gender" class="form-control">
+						@if (Model.Gender == "Male")
+						{
+							<option selected value="Male">Male</option>
+									<option value="Female">Female</option>
+						}
+						else if (Model.Gender == "Female")
+						{
+
+							        <option value="Male">Male</option>
+									<option selected value="Female">Female</option>
+
+						}
+
+						else
+						{
+							        <option value="Male">Male</option>
+									<option value="Female">Female</option>
+						}
+
+
+					</select>
+				</div>
+
+
+
+
+				<div class="form-group">
+					<label for="exampleInputPassword1">Basic Salary</label>
+					<input type="text" name="Basic_Salary" value="@Model.Basic_Salary" class="form-control" id="exampleInputPassword1" placeholder="Salary of The Agent">
+				</div>
+
+				<div class="form-group">
+					<label for="exampleInputPassword1">Share Charge</label>
+					<input type="text" name="Share_Charge" value="@Model.Share_Charge" class="form-control" id="exampleInputPassword1" placeholder="Percentage of the Agent">
+				</div>
+
+				
+
+				   @Html.HiddenFor(model => model.id)
+
+
+
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		</div>
+		
+	</div>
+	
+</div>
+}
